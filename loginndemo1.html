@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Email and Password Validation</title>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Email and Password Validation</h2>
+
+    <div style="text-align: center;">
+        <table border="1" cellpadding="10" cellspacing="0" style="width: 50%; margin: 20px auto; border-collapse: collapse; background-color: #f4f4f4;">
+            <tr style="background-color: #4CAF50; color: white;">
+                <th>Field</th>
+                <th>Input</th>
+            </tr>
+            <tr>
+                <td>Email ID</td>
+                <td><input type="text" id="email" placeholder="Enter your email" style="padding: 8px; width: 100%; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="password" placeholder="Enter your password" style="padding: 8px; width: 100%; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;"></td>
+            </tr>
+        </table>
+
+        <button onclick="validate()" style="padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Validate</button>
+    </div>
+
+    <script>
+        function validate() {
+            var email = document.getElementById('email').value;
+            var pwd = document.getElementById('password').value;
+
+
+            var emailPattern = /^[a-zA-Z][a-zA-Z0-9]*@[a-zA-Z]+\.[a-zA-Z]+$/;
+
+            var pwdPattern = /^[a-zA-Z0-9]+$/;
+
+            var st1 = "", st2 = "";
+
+
+            if (email == "") {
+                st1 = "Please enter your email.";
+            } else if (!emailPattern.test(email)) {
+                st1 = "Invalid email ID.";
+            } else {
+                st1 = "Email ID is valid.";
+            }
+
+
+            if (pwd == "") {
+                st2 = "Please enter your password.";
+            } else if (!pwdPattern.test(pwd)) {
+                st2 = "Password must only contain alphanumeric characters.";
+            } else if (pwd.length < 6) {
+                st2 = "Password must be at least 6 characters long.";
+            } else {
+                st2 = "Password is valid.";
+            }
+
+            alert(st1 + "\n" + st2);
+        }
+    </script>
+
+</body>
+</html>
+
